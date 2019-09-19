@@ -1,0 +1,100 @@
+/**index.wxss**/
+page{
+  width: 100%;
+  height: 100%;
+}
+.container{
+  width: 100%;
+  height: 100%;
+  background: #efefef;
+  letter-spacing:2rpx;
+}
+/* 对话列表 */
+
+#dialog_list {
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  height: 100%;
+}
+
+/*隐藏滚动条*/
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.singleDialog {
+  width: 100%;
+  flex-direction: column;
+}
+.left-box {
+  display: flex;
+  flex-direction: row;
+  padding: 10rpx 30rpx;
+  margin-top: 20rpx;
+  width: 70%;
+}
+
+.right-box {
+  display: flex;
+  flex-direction: row;
+  padding: 10rpx 30rpx;
+  margin-top: 20rpx;
+  justify-content: flex-end;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  margin-left: 0rpx;
+  max-width: 70%;
+}
+
+.username {
+  color: gray;
+  font-size: 28rpx;
+  margin: auto 20rpx;
+}
+
+.content {
+  margin-top: 10rpx;
+  font-size: 32rpx;
+  border-radius: 20rpx;
+  padding: 20rpx 20rpx;
+  background-color: #fff;
+  margin: 10rpx 20rpx;
+  word-break: break-all;
+  text-align: left;
+}
+/* 发送信息 */
+.sendMessagecont{
+  width: 100%;
+  height: 80px;
+  background: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.sendMessagecont input{
+  width: 65%;
+  height: 40px;
+  line-height: 40px;
+  background:#efefef;
+  border-radius: 4rpx;
+  padding: 0px 15px;
+  color: #999;
+  position: relative;
+  margin: 0 10px;
+}
+.sendMessagecont button{
+  width: 20%;
+  height: 40px;
+  line-height: 40px;
+  background: #0979f8;
+  color: #fff;
+  font-size: 14px;
+  margin: 0 10px;
+}

@@ -1,0 +1,19 @@
+<!--index.wxml-->
+<view class="container">
+ <!--信息滚动页面-->
+ <scroll-view scroll-y="{{true}}" id="dialog_list" scroll-with-animation='{{true}}'>
+    <view class="message-list" wx:for="{{messageInfo}}"  bindtap="bindChatTap" id='{{index}}' >
+      <view class="list-image">
+        <image src="{{item.avatarUrl}}"></image>
+      </view>
+      <view class="list-cont">
+        <text class="name">{{item.nickName}}</text>
+        <text class="cont">{{item.message}}</text>
+      </view>
+      <view class="list-messageTs" wx:if="{{item.unreadCount}}">
+        {{item.unreadCount}}
+      </view>
+    </view>
+ </scroll-view>
+ <!--信息发送页面-->
+</view>

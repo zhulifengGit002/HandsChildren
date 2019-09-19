@@ -1,0 +1,73 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <image class="userinfo-avatar" src="{{userImg}}" ></image>
+    <text class="userinfo-nickname">{{setInfo.parent.nickname}}</text>
+    <image class="navigation" bindtap="startNavigation" src="/images/navigation.png"></image>
+    <image class="chatTab" bindtap="startChat" src="/images/chat.png"></image>
+  </view>
+  <view class='personInfoShow infoShow'>
+      <view class='infoShowList'>
+        <text class='infoShowleft'>联系方式</text>
+        <text wx:if="{{setInfo.setting.phoneFlag == false}}">**</text>
+        <text wx:elif="{{setInfo.parent.phone}}" bindtap='copyText' data-text="{{setInfo.parent.phone}}">{{setInfo.parent.phone}}</text>
+        <text wx:else>暂无</text>
+      </view>
+      <view class='infoShowList'>
+        <text class='infoShowleft'>爱好</text>
+        <text wx:if="{{setInfo.parent.hobby}}">{{setInfo.parent.hobby}}</text>
+        <text wx:else>暂无</text>
+      </view>
+      <view class='infoShowList'>
+        <text class='infoShowleft'>小区名称</text>
+        <text wx:if="{{setInfo.setting.addressFlag == false}}">**</text>
+        <text wx:elif="{{setInfo.parent.address}}" bindtap='copyText' data-text="{{setInfo.parent.address}}">{{setInfo.parent.address}}</text>
+        <text wx:else>暂无</text>
+      </view>
+    </view>
+    <view class="childInfo infoList" wx:if="{{setInfo.children}}">
+      <text>娃信息</text>
+    </view>
+    <block wx:for="{{setInfo.children}}" wx:key="id">
+      <view class='childInfoShow infoShow'>
+        <view class='infoShowList'>
+          <text class='infoShowleft'>小名</text>
+          <text wx:if="{{item.name}}">{{item.name}}</text>
+          <text wx:else>暂无</text>
+        </view>
+        <view class='infoShowList'>
+          <text class='infoShowleft'>性别</text>
+          <text wx:if="{{item.gender}}">{{item.gender}}</text>
+          <text wx:else>暂无</text>
+        </view>
+        <view class='infoShowList'>
+          <text class='infoShowleft'>生日</text>
+          <text  wx:if="{{setInfo.setting.birthdayFlag === false}}">**</text>
+          <text  wx:elif="{{item.birthday}}">{{item.birthday}}</text>
+          <text wx:else>暂无</text>
+        </view>
+        <view class='infoShowList'>
+          <text class='infoShowleft'>爱好</text>
+          <text wx:if="{{item.hobby}}">{{item.hobby}}</text>
+          <text wx:else>暂无</text>
+        </view>
+        <view class='infoShowList'>
+          <text class='infoShowleft'>幼儿园/学校</text>
+          <text  wx:if="{{setInfo.setting.schoolFlag == false}}">**</text>
+          <text  wx:elif="{{item.school}}">{{item.school}}</text>
+          <text wx:else>暂无</text>
+        </view>
+        <view class='infoShowList'>
+          <text class='infoShowleft'>教育机构</text>
+          <text  wx:if="{{item.school}}">{{item.agency}}</text>
+          <text wx:else>暂无</text>
+        </view>
+        <view class='infoShowList'>
+          <text class='infoShowleft'>活动场所</text>
+          <!-- <text  wx:if="{{setInfo.setting.placeFlag == false}}">**</text> -->
+          <text  wx:if="{{item.place}}">{{item.place}}</text>
+          <text wx:else>暂无</text>
+        </view>
+      </view>
+    </block>
+</view>

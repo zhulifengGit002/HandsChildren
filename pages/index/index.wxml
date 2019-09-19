@@ -1,0 +1,106 @@
+<!--index.wxml-->
+<view class="container">
+  <block wx:if="{{hasUserInfo && canIUse}}">
+    <view class="brrageWarp" wx:if="{{showBrrage}}">
+    <block wx:for="{{brrageMsg}}" wx:key="id" >
+      <view class="barrageItem"  style="animation: first 11s linear forwards;top:{{item.top}}px">
+          <text>{{item.nickName}}:</text>
+          <block wx:for="{{item.message}}" wx:key="{{index}}">
+            <text wx:if="{{item.msgType==='text'}}">{{item.msgCont}}</text>
+            <image wx:if="{{item.msgType==='emoji'}}" src="{{item.msgImage}}" class="emojiItem"></image>
+          </block>
+      </view>
+    </block>
+    </view>
+    <map id="myMap"
+      longitude="{{longitude}}" latitude="{{latitude}}" markers="{{markers}}"
+      scale = "12" 
+      style='height:{{mapHeight}}' bindmarkertap="markerTap" bindtap="bindNavShow"
+    >
+    <cover-view class='student'>
+      <cover-view>婴儿：{{childSummary.babyCount}}人</cover-view>
+      <cover-view>幼儿园：{{childSummary.childCount}}人</cover-view>
+      <cover-view>小学：{{childSummary.schoolCount}}人</cover-view>
+    </cover-view>
+    <cover-view class='functionTab'>
+      <cover-view  class='mineImage' bindtap="bindMineTap">
+        <cover-image src="{{userInfo.avatarUrl}}" style='height:25px;width:25px;border-radius:50%;margin: 4px auto;'></cover-image>
+        <cover-view>我的</cover-view>
+      </cover-view>
+      <cover-view  class='mineImage' bindtap="bindMessageTap">
+        <cover-image src="/images/message.png" style='height:25px;width:25px;margin: 4px auto;'></cover-image>
+        <cover-view>消息</cover-view>
+        <cover-view class="ts" wx:if="{{unread}}">{{unread}}</cover-view>
+      </cover-view>
+
+      <cover-view  class='barrageSwitch' catchtap="toggleBrrage">
+        <cover-image wx:if="{{showBrrage}}" src="/images/danmu.png" style='width:26px;margin: 2px auto;'></cover-image>
+        <cover-image wx:if="{{!showBrrage}}" src="/images/danmuHide.png" style='width:26px;margin: 2px auto;'></cover-image>
+        <cover-view>弹幕</cover-view>
+      </cover-view>
+      <cover-view  class='shareSwitch' bindtap="" open-type="share">
+        <cover-image src="/images/share.png" style='width:26px;margin: 2px auto;'></cover-image>
+        <cover-view >分享</cover-view>
+        <button class='share-button' open-type="share" style='position:absolute;top:0;width:100%;height:100%;z-index:999;font-size:0;background:rgba(0,0,0,0);text-align:right;color:#fff;'> 1</button>
+      </cover-view>
+    </cover-view>
+    <cover-view class='noticeWap'>
+      <cover-view wx:if="{{activeCount}}" class='peopleNUmmber' wx:if="{{!showEmojis}}">
+        <cover-view>{{activeCount}}/{{totalCount}}</cover-view>
+        <cover-view>在线/全部</cover-view>
+      </cover-view>
+      <cover-view  class='returnMap' wx:if="{{!showEmojis}}" bindtap="returnMap">
+        <cover-image src="/images/return.png" style='width:26px;'></cover-image>
+      </cover-view>
+      <cover-view class='map-notice' wx:if="{{noticeShow}}">
+        <cover-view class='notice-title'>【 站内公告 】</cover-view>
+        <cover-view class='notice-cont'>{{noticeMsg}}</cover-view>
+        <cover-image bindtap="bindNoticeTap" src="/images/close.png" style='position:absolute;right:5px; top:2px;width:15px;height:15px;'></cover-image>
+      </cover-view>
+      <cover-view class='map-navigation' wx:if="{{navigationShow}}">
+        <cover-view class='notice-navtext'>{{businessInfo.content}}</cover-view>
+        <cover-view class='notice-navtext'>电话：{{businessInfo.phone}}</cover-view>
+        <cover-view class='notice-navtext'>经营范围：{{businessInfo.scope}}</cover-view>
+        <cover-view class='notice-navtext'>地址：{{businessInfo.address}}</cover-view>
+        <cover-view class='evaluate'>
+        评价：
+        <cover-image wx:for="{{evaluate}}" id="evaluate{{index}}" bindtap="evaluate" src="{{item}}" style='width:20px;margin:0 2px;'></cover-image>
+        </cover-view>
+        <cover-image bindtap="startNavigation" src="/images/navigation.png" style='width:30px;height:30px;position:absolute;right:30px;top:15px;'></cover-image>
+        </cover-view>
+    </cover-view>
+    <cover-view class='map-contor'>
+      <cover-view class='contor-input'>
+        <cover-view catchtap="toggleEmojis" class='emojisWarp'>
+        <cover-image  src="/images/smile.png" style='height:26px;width:26px;margin:0 auto;'></cover-image></cover-view>
+        <cover-view class="input-info" bindtap="tapInput">
+              {{inputInfo}}
+              <input class="hide" value="{{searchText}}" focus="{{inputFocus}}"  bindinput="blurInput" value="{{inputInfo}}" maxlength='13'></input>
+          </cover-view>
+          <cover-view class='button-cover'><button bindtap='saveMsg' class='save-button'>发送</button></cover-view>
+        </cover-view>
+        <cover-view  class="emojis_box" wx:if="{{showEmojis}}">
+          <cover-view class="emoji_wrap" wx:for="{{emojiList}}" wx:key="key">
+            <cover-image catchtap="clickEmoji" src="{{item.img}}" data-key="{{item.key}}" class="emoji"></cover-image>
+          </cover-view>
+        </cover-view>
+        <!-- <cover-view  class='share-huihua' catchtap="toggleAddjzq">加入家长群</cover-view> -->
+    </cover-view>
+    <!-- <cover-view class='shadowMap' wx:if="{{showJzq}}">
+      <cover-view class='shadowCont'>
+        <cover-view >扫描二维码添加管理员</cover-view>
+        <cover-view class='colse' catchtap="toggleAddjzq">X</cover-view>
+        <cover-image src='/images/ewm.jpg' class='img' bindtap="previewImage"></cover-image>
+      </cover-view>
+    </cover-view> -->
+    </map>
+  </block>
+  <block wx:if="{{!hasUserInfo && canIUse}}">
+    <view class="shadow"  style='display:{{display}}'>
+      <view class='userinfo'>
+            <text>请先登录</text>
+            <button  open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 微信快捷登陆 </button>
+      </view>
+    </view>
+  </block>
+</view>

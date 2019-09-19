@@ -1,0 +1,102 @@
+/**index.wxss**/
+.container{
+  font-size: 12px;
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background: #ffffff;
+  padding: 20rpx 25rpx 30rpx 0;
+  margin: 0 0 0 0;
+  border-top: 0 solid #eee;
+  border-bottom: 1px solid #dcdcdc;
+  box-shadow: 0 2px 5px #eeeeee;
+  position: relative;
+}
+.navigation{
+  width:20px;
+  height:20px;
+  position:absolute;
+  top:20px;
+  right:28px;
+}
+.chatTab{
+  width:20px;
+  height:20px;
+  position:absolute;
+  bottom:10px;
+  right:28px;
+}
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+.infoList{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  box-sizing:border-box;
+  padding: 30rpx 20rpx;
+  border-bottom: 1px solid #dcdcdc;
+}
+.infoShow{
+  width: 100%;
+  position: relative;
+}
+.personInfoShow{
+  width: 90%;
+  border-top: 0 solid #eee;
+  border-bottom: 1px solid #dcdcdc;
+  box-shadow: 0 2px 5px #eeeeee;
+  margin: 0 auto;
+}
+.childInfoShow{
+  width: 90%;
+  border-top: 0 solid #eee;
+  border-bottom: 1px solid #dcdcdc;
+  box-shadow: 0 2px 5px #eeeeee;
+  margin: 0 auto;
+  margin-bottom: 20rpx;
+}
+.infoShowList{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  box-sizing:border-box;
+  padding: 20rpx 20rpx;
+}
+.infoShowList .infoShowleft{
+  width: 40%;
+}
+
+.infoList{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  box-sizing:border-box;
+  padding: 30rpx 20rpx;
+  border-bottom: 1px solid #dcdcdc;
+}
+.infoList text{
+  width: 30%;
+}
+.infoList input{
+  width: 70%;
+} 
+.buttonInfo{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  margin: 100rpx 0 0 0;
+}

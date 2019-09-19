@@ -1,0 +1,163 @@
+/**index.wxss**/
+.container{
+  font-size: 12px;
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background: #ffffff;
+  padding: 20rpx 25rpx 30rpx 0;
+  margin: 0 0 0 0;
+  border-top: 0 solid #eee;
+  border-bottom: 1px solid #dcdcdc;
+  box-shadow: 0 2px 5px #eeeeee;
+  position: relative;
+}
+.jifen{
+  position:absolute;
+  right: 20px;
+  bottom: 15px;
+  color: #aaa;
+}
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+.usermotto {
+  margin-top: 200px;
+}
+.set-up{
+  width:20px;
+  height:20px;
+  position: absolute;
+  top:20px;
+  right:28px;
+}
+.infoList{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  box-sizing:border-box;
+  padding: 30rpx 20rpx;
+  border-bottom: 1px solid #dcdcdc;
+}
+.infoShow{
+  width: 100%;
+  position: relative;
+}
+.personInfoShow{
+  width: 80%;
+  border-top: 0 solid #eee;
+  border-bottom: 1px solid #dcdcdc;
+  box-shadow: 0 2px 5px #eeeeee;
+  margin: 0 auto;
+}
+.childInfoShow{
+  width: 80%;
+  border-top: 0 solid #eee;
+  border-bottom: 1px solid #dcdcdc;
+  box-shadow: 0 2px 5px #eeeeee;
+  margin: 0 auto;
+  margin-bottom: 20rpx;
+}
+.infoShowList{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  box-sizing:border-box;
+  padding: 20rpx 20rpx;
+}
+.infoShowList .infoShowleft{
+  width: 45%;
+}
+.setPeople{
+  width: 100%;
+  box-sizing:border-box;
+  padding: 0 20rpx;
+}
+.infots{
+  width: 100%;
+  box-sizing:border-box;
+  padding: 30rpx 20rpx;
+  text-align: center;
+  border-bottom: 1px solid #dcdcdc;
+}
+.infots text{
+  width: 100%;
+}
+.infoList{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  box-sizing:border-box;
+  padding: 30rpx 20rpx;
+  border-bottom: 1px solid #dcdcdc;
+}
+.infoList text{
+  width: 40%;
+}
+.infoList input{
+  width: 60%;
+} 
+.buttonInfo{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  margin: 100rpx 0 0 0;
+}
+.setInfo{
+  width: 40%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background: #0979f8;
+  color: #fff;
+  box-sizing: border-box;
+  border-radius: 25px;
+}
+.closeInfo{
+  width: 40%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background: #0979f8;
+  color: #fff;
+  box-sizing: border-box;
+  border-radius: 25px;
+}
+.changeChidInfo{
+  position: absolute;
+  right: 60rpx;
+  top: 10px;
+  width: 60rpx;
+  height: 60rpx;
+}
+.changeChidInfo image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.deleteChidInfo{
+  position: absolute;
+  right: 0rpx;
+  top: 10px;
+  width: 60rpx;
+  height: 60rpx;
+}
+.deleteChidInfo image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.setChild{
+  width: 90%;
+}

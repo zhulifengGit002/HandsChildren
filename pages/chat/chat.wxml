@@ -1,0 +1,25 @@
+<!--index.wxml-->
+<view class="container">
+ <!--信息滚动页面-->
+ <scroll-view scroll-y="{{true}}" id="dialog_list"  scroll-top="{{top_value}}" scroll-with-animation='{{true}}'>
+  <view class="singleDialog" wx:for="{{chatInfoList}}">
+    <view class='right-box' wx:if="{{item.sender== senderInfo.userId}}">
+      <view class="details" style="align-items:flex-end;">
+        <text class="username" style="text-align:right;">{{senderInfo.nickName}}</text>
+        <text class="content" style="background-color:#0979f8;color:#fff;" bindlongpress='longPress' id='{{item.id}}'>{{item.message}}</text>
+      </view>
+    </view>
+    <view class='left-box' wx:else>
+      <view class="details">
+        <text class="username" style="text-align:left;">{{receiverInfo.userName}}</text>
+        <text class="content" style="background-color:#fff;color:#252525;" bindlongpress='longPress' id='{{item.id}}'>{{item.message}}</text>
+      </view>
+    </view>
+  </view>
+ </scroll-view>
+ <!--信息发送页面-->
+ <view class='sendMessagecont'>
+  <input focus="true"  bindinput="blurInput" value="{{messageInfo}}"></input>
+  <button bindtap="sendMessage">发送</button>
+ </view>
+</view>

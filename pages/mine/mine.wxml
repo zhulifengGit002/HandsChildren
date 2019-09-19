@@ -1,0 +1,170 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <text class='jifen'>积分：{{setInfo.amount}}</text>
+      <image bindtap="bindsetUpTab" class="set-up" src="/images/setUp.png"></image>
+    </block>
+  </view>
+  <view class='infoShow' wx:if="{{infoShow}}">
+    <view class="personInfo infoList" bindtap='bindPeople' >
+      <text>个人信息</text>
+      <text wx:if="{{setInfo.parent}}">修改</text>
+      <text wx:else>创建</text>
+    </view>
+    <view class='personInfoShow infoShow' wx:if="{{setInfo.parent}}">
+      <view class='infoShowList'>
+        <text class='infoShowleft'>联系方式</text>
+        <text wx:if="{{setInfo.parent.phone}}">{{setInfo.parent.phone}}</text>
+        <text wx:else>暂无</text>
+      </view>
+      <view class='infoShowList'>
+        <text class='infoShowleft'>爱好</text>
+        <text wx:if="{{setInfo.parent.hobby}}">{{setInfo.parent.hobby}}</text>
+        <text wx:else>暂无</text>
+      </view>
+      <view class='infoShowList'>
+        <text class='infoShowleft'>小区名称</text>
+        <text wx:if="{{setInfo.parent.address}}">{{setInfo.parent.address}}</text>
+        <text wx:else>暂无</text>
+      </view>
+    </view>
+    <view class="childInfo infoList" bindtap='bindChild'>
+      <text>娃信息</text>
+      <text wx:if="{{setInfo.children}}">添加</text>
+      <text wx:else>创建</text>
+    </view>
+    <block wx:for="{{setInfo.children}}" wx:key="id">
+      <view class='childInfoShow infoShow'>
+        <view class='infoShowList'>
+          <text class='infoShowleft'>小名</text>
+          <text wx:if="{{item.name}}">{{item.name}}</text>
+          <text wx:else>暂无</text>
+        </view>
+        <view class='infoShowList'>
+          <text class='infoShowleft'>性别</text>
+          <text wx:if="{{item.gender}}">{{item.gender}}</text>
+          <text wx:else>暂无</text>
+        </view>
+        <view class='infoShowList'>
+          <text class='infoShowleft'>生日</text>
+          <text wx:if="{{item.birthday}}">{{item.birthday}}</text>
+          <text wx:else>暂无</text>
+        </view>
+        <view class='infoShowList'>
+          <text class='infoShowleft'>爱好</text>
+          <text wx:if="{{item.hobby}}">{{item.hobby}}</text>
+          <text wx:else>暂无</text>
+        </view>
+        <view class='infoShowList'>
+          <text class='infoShowleft'>幼儿园/学校</text>
+          <text  wx:if="{{item.school}}">{{item.school}}</text>
+          <text wx:else>暂无</text>
+        </view>
+        <view class='infoShowList'>
+          <text class='infoShowleft'>教育机构</text>
+          <text  wx:if="{{item.agency}}">{{item.agency}}</text>
+          <text wx:else>暂无</text>
+        </view>
+        <view class='infoShowList'>
+          <text class='infoShowleft'>活动场所</text>
+          <text  wx:if="{{item.place}}">{{item.place}}</text>
+          <text wx:else>暂无</text>
+        </view>
+        <view class='changeChidInfo' id='{{index}}'  bindtap='bindChangeChild'><image src="/images/change.png" class=""></image></view>
+        <view class='deleteChidInfo' id='{{index}}' bindtap='bindDeletChild'><image src="/images/delete.png" class=""></image></view>
+      </view>
+    </block>
+  </view>
+  <view class='setPeople' wx:if="{{peopleSet}}">
+    <view class='infots' >
+      <text>个人信息填写</text>
+    </view>
+    <view class='infoList'>
+      <text>联系方式:</text><input id='phone' placeholder='请输入联系方式' value='{{setInfo.parent.phone}}' bindinput="blurInput"></input>
+    </view>
+    <view class='infoList'>
+      <text>爱好:</text><input id='hobby' placeholder='请填写个人爱好' value='{{setInfo.parent.hobby}}' bindinput="blurInput"></input>
+    </view>
+    <view class='infoList'>
+      <text>小区名称:</text><input id='address' placeholder='请填写详细地址' value='{{setInfo.parent.address}}' bindinput="blurInput"></input>
+    </view>
+    <view class='buttonInfo'>
+      <view class='setInfo'  bindtap="setPeopleInfo">保存</view>
+      <view class='closeInfo' bindtap="closeInfo">取消</view>
+    </view>
+  </view>
+  <view class='setChild' wx:if="{{childrenSet}}">
+    <view class='infots' >
+      <text>娃信息填写</text>
+    </view>
+    <view class='infoList'>
+      <text>小名:</text><input id='name' placeholder='请填写娃姓名' value='' bindinput="blurInput"></input>
+    </view>
+    <view class='infoList'>
+      <text>性别:</text><input id='gender' placeholder='请填写娃性别' value='' bindinput="blurInput"></input>
+    </view>
+    <view class='infoList'>
+      <text>生日:</text>
+      <picker style='width:70%;color:#666;' mode="date" value="{{date}}" start="" end=""  fields="day" bindchange="bindDateChange">
+        <view class="picker">
+          {{date}}
+        </view>
+      </picker>
+    </view>
+    <view class='infoList'>
+      <text>爱好:</text><input id='childHobby' placeholder='请填写娃爱好' value='' bindinput="blurInput"></input>
+    </view>
+    <view class='infoList'>
+      <text>幼儿园/学校:</text><input id='school' placeholder='请填写娃学校' value='' bindinput="blurInput"></input>
+    </view>  
+    <view class='infoList'>
+      <text>教育机构:</text><input id='agency' placeholder='请填写娃教育机构' value='' bindinput="blurInput"></input>
+    </view>
+    <view class='infoList'>
+      <text>活动场所:</text><input id='place' placeholder='请填写娃活动场所' value='' bindinput="blurInput"></input>
+    </view>
+    <view class='buttonInfo'>
+      <view class='setInfo' bindtap="setChildInfo">保存信息</view>
+      <view class='closeInfo' bindtap="closeInfo">取消</view>
+    </view>
+  </view>
+  <view class='setChild' wx:if="{{changeChild}}">
+    <view class='infots' >
+      <text>娃信息修改</text>
+    </view>
+    <view class='infoList'>
+      <text>小名:</text><input id='name' placeholder='请填写娃姓名' value='{{childInfo.name}}' bindinput="blurInput"></input>
+    </view>
+    <view class='infoList'>
+      <text>性别:</text><input id='gender' placeholder='请填写娃性别' value='{{childInfo.gender}}' bindinput="blurInput"></input>
+    </view>
+    <view class='infoList'>
+      <text>生日:</text>
+      <picker style='width:70%;color:#666;' mode="date" value="{{date}}" start="" end=""  fields="day" bindchange="bindDateChange">
+        <view class="picker">
+          {{date}}
+        </view>
+      </picker>
+    </view>
+    <view class='infoList'>
+      <text>爱好:</text><input id='childHobby' placeholder='请填写娃爱好' value='{{childInfo.hobby}}' bindinput="blurInput"></input>
+    </view>
+    <view class='infoList'>
+      <text>幼儿园/学校:</text><input id='school' placeholder='请填写娃学校' value='{{childInfo.school}}' bindinput="blurInput"></input>
+    </view>
+    <view class='infoList'>
+      <text>教育机构:</text><input id='agency' placeholder='请填写娃教育机构' value='{{childInfo.agency}}' bindinput="blurInput"></input>
+    </view>
+    <view class='infoList'>
+      <text>活动场所:</text><input id='place' placeholder='请填写娃活动场所' value='{{childInfo.place}}' bindinput="blurInput"></input>
+    </view>
+    <view class='buttonInfo'>
+      <view class='setInfo'  bindtap="setChangeChildInfo">保存</view>
+      <view class='closeInfo' bindtap="closeInfo">取消</view>
+    </view>
+  </view>
+</view>

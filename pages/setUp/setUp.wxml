@@ -1,0 +1,23 @@
+<!--index.wxml-->
+<view class="container">
+  <view class='set-list' bindtap='setUpHide'>
+    <text>联系方式</text>
+    <image wx:if="{{setting.phoneFlag}}" class="on" src="/images/on.png"  data-name="phoneFlag"></image>
+    <image wx:else class="on" src="/images/off.png" data-name="phoneFlag"></image>
+  </view>
+  <view class='set-list' bindtap='setUpHide'>
+    <text>生日</text>
+    <image wx:if="{{setting.birthdayFlag}}"  class="on" src="/images/on.png" data-name="birthdayFlag"></image>
+    <image wx:else class="on" src="/images/off.png" data-name="birthdayFlag"></image>
+  </view>
+  <view class='set-list' bindtap='setUpHide'>
+    <text>幼儿园/学校</text>
+    <image wx:if="{{setting.schoolFlag}}" class="on" src="/images/on.png" data-name="schoolFlag"></image>
+    <image wx:else class="on" src="/images/off.png" data-name="schoolFlag"></image>
+  </view>
+  <view class='set-list' bindtap='setUpHide'>
+    <text>小区</text>
+    <image wx:if="{{setting.addressFlag}}" class="on" src="/images/on.png" data-name="addressFlag"></image>
+    <image wx:else class="on" src="/images/off.png" data-name="addressFlag"></image>
+  </view>
+</view>

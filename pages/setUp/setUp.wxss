@@ -1,0 +1,22 @@
+/**index.wxss**/
+.container{
+  width: 100%;
+}
+.set-list{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #efefef;
+  box-sizing:border-box;
+  color: #666;
+}
+.on{
+  width:35px;
+  height:30px;
+}
+.off{
+  width:35px;
+  height:30px;
+}
